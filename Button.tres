@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://6lishr52pj5"]
+
+[ext_resource type="FontFile" uid="uid://ghqchfro1agf" path="res://slkscre.ttf" id="1_h4byk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ucnb"]
+bg_color = Color(1, 0.423529, 0.721569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.72, 0.1584, 0.46728, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmygd"]
+bg_color = Color(1, 0.529412, 0.701961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.72, 0.1584, 0.46728, 1)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wbkh"]
+bg_color = Color(0.898039, 0.372549, 0.54902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.666667, 0.117647, 0.4, 1)
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_h4byk")
+Button/styles/hover = SubResource("StyleBoxFlat_8ucnb")
+Button/styles/normal = SubResource("StyleBoxFlat_pmygd")
+Button/styles/pressed = SubResource("StyleBoxFlat_3wbkh")

@@ -1,0 +1,165 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2cmloifjjh7y"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_hfaj5"]
+[ext_resource type="PackedScene" uid="uid://cw22i6aperhbl" path="res://game_play.tscn" id="1_iyws4"]
+[ext_resource type="AudioStream" uid="uid://hubl7bqqu73n" path="res://explosion.ogg" id="2_aq36n"]
+[ext_resource type="Texture2D" uid="uid://c2qyv5hppbi21" path="res://Daram.png" id="3_56csj"]
+[ext_resource type="Texture2D" uid="uid://llt2ucl7q6qe" path="res://game_over.png" id="3_fxv8q"]
+[ext_resource type="Texture2D" uid="uid://cc0ju5w7ovrw3" path="res://win.png" id="3_ydks2"]
+[ext_resource type="Theme" uid="uid://6lishr52pj5" path="res://Button.tres" id="5_hpmrw"]
+[ext_resource type="FontFile" uid="uid://ghqchfro1agf" path="res://slkscre.ttf" id="6_tfvw1"]
+[ext_resource type="AudioStream" uid="uid://cuqpep8gxjrya" path="res://win.ogg" id="9_gry2t"]
+[ext_resource type="AudioStream" uid="uid://c4j5tm8j4a4tv" path="res://count_down.wav" id="9_u7m4v"]
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_hfaj5")
+
+[node name="GamePlay" parent="." instance=ExtResource("1_iyws4")]
+process_mode = 1
+position = Vector2(160, 40)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -140.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.854902)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_fxv8q")
+expand_mode = 2
+
+[node name="WinScreen" type="VBoxContainer" parent="HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.956863)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -140.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/WinScreen"]
+modulate = Color(1, 1, 1, 0.854902)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_ydks2")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 40.0
+offset_right = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 160.0
+offset_bottom = 360.0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_56csj")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(1, 0.466667, 0.658824, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_56csj")
+expand_mode = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 480.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_56csj")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(1, 0.466667, 0.658824, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_56csj")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 160.0
+offset_right = 480.0
+offset_bottom = 40.0
+color = Color(1, 0.466667, 0.658824, 1)
+
+[node name="Time" type="Label" parent="."]
+offset_left = 160.0
+offset_top = 1.0
+offset_right = 320.0
+offset_bottom = 41.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Re" type="Button" parent="."]
+offset_left = 320.0
+offset_top = 1.0
+offset_right = 480.0
+offset_bottom = 41.0
+theme = ExtResource("5_hpmrw")
+theme_override_fonts/font = ExtResource("6_tfvw1")
+text = "Restart"
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aq36n")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("9_gry2t")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aq36n")
+
+[node name="CountDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_u7m4v")
+
+[connection signal="gui_input" from="HUD/Control" to="GamePlay" method="_on_control_gui_input"]
+[connection signal="pressed" from="Re" to="GamePlay" method="_on_re_pressed"]
